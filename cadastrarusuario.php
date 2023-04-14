@@ -78,6 +78,21 @@
 					echo ("Preencha a <b>cidade</b> corretamente");
 				} else {
 					// pela lógica utilizada, se chegar nesse else é por que tudo está preenchido
+					// ip do banco de dados, usuario, senha, nome_do_banco
+					$conn = mysqli_connect("localhost", "root", "", "programacaoparainternet"); 
+
+					if ($conn) {
+						// conexão com sucesso
+						$sql = "INSERT INTO usuarios (nome, nascimento, sexo, telefone, redesocial, cidade) VALUES ('$nome', '$nasc', '$sexo', '$fone', '$link_rede_social', '$cidade')";
+
+						if (mysqli_query($conn, $sql)){
+							echo ("Usuário salvo com sucesso");
+						} else {
+							echo ("Erro: $sql " . mysqli_error($conn) );
+						}
+					} else {
+						echo ("Houve um erro conectar com o banco de dados " . mysqli_connect_error() );
+					}
 				}
 
 			} else {
