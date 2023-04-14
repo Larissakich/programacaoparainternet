@@ -52,5 +52,38 @@
 			<input type="submit" name="enviar" value="Finalizar cadastro">
 		</fieldset>
 	</form>
+	<?php
+		// usuario clicou no botao enviar
+		if (isset($_POST['enviar'])) {
+
+			// testa se o usuario marcou a opcao sim para aceitar os termos
+			if ($_POST['concordancia'] == "sim") {
+				// armazenando os valores dos inputs em variaveis
+				$nome = $_POST['nome'];
+				$nasc = $_POST['nascimento'];
+				$sexo = $_POST['sexo'];
+				$fone = $_POST['fone'];
+				$link_rede_social = $_POST['link'];
+				$cidade = $_POST['cidade'];
+
+				if (empty($nome)){
+					echo ("Preencha o <b>nome</b> corretamente");
+				} else if (empty($nasc)){
+					echo ("Prrencha o <b>nascimento</b> corretamente");
+				} else if (empty($sexo)){
+					echo ("Necessário escolher o <b>sexo</b> corretamente");
+				} else if (empty($fone)){
+					echo ("Preencha o <b>fone</b> corretamente");
+				} else if ($cidade == "" ){
+					echo ("Preencha a <b>cidade</b> corretamente");
+				} else {
+					// pela lógica utilizada, se chegar nesse else é por que tudo está preenchido
+				}
+
+			} else {
+				echo ("Você precisa concordar para finalizar o cadastro");
+			}
+		}
+	?>
 </body>
 </html>
